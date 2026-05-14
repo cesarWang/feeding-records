@@ -2,7 +2,6 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import Inspector from 'unplugin-vue-dev-locator/vite';
-import traeBadgePlugin from 'vite-plugin-trae-solo-badge';
 import Components from 'unplugin-vue-components/vite';
 import { VantResolver } from 'unplugin-vue-components/resolvers';
 
@@ -17,15 +16,6 @@ export default defineConfig({
       resolvers: [VantResolver()],
     }),
     Inspector(),
-    traeBadgePlugin({
-      variant: 'dark',
-      position: 'bottom-right',
-      prodOnly: true,
-      clickable: true,
-      clickUrl: 'https://www.trae.ai/solo?showJoin=1',
-      autoTheme: true,
-      autoThemeTarget: '#app',
-    }),
   ],
   resolve: {
     alias: {
