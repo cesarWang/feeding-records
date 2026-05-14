@@ -69,19 +69,19 @@ const formatType = (type: string) => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-pink-50 flex flex-col items-center p-6 relative max-w-md mx-auto shadow-xl">
-    <header class="w-full flex justify-between items-center pt-8 mb-8">
+  <div class="flex relative flex-col items-center p-6 mx-auto max-w-md min-h-screen bg-pink-50 shadow-xl">
+    <header class="flex justify-between items-center pt-8 mb-8 w-full">
       <h1 class="text-2xl font-medium text-gray-900">喂养记录</h1>
       <button @click="logout" class="text-sm text-gray-500 hover:text-gray-800">退出登录</button>
     </header>
 
-    <div class="w-full grid grid-cols-2 gap-4 mb-8">
+    <div class="grid grid-cols-2 gap-4 mb-8 w-full">
       <!-- 母乳喂养入口 -->
       <button
         @click="goToBreastFeeding"
-        class="bg-white p-6 rounded-3xl shadow-sm flex flex-col items-center justify-center gap-4 transition-transform active:scale-95 border border-pink-100"
+        class="flex flex-col gap-4 justify-center items-center p-6 bg-white rounded-3xl border border-pink-100 shadow-sm transition-transform active:scale-95"
       >
-        <div class="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center">
+        <div class="flex justify-center items-center w-16 h-16 bg-pink-100 rounded-full">
           <span class="text-2xl">🤱</span>
         </div>
         <span class="font-medium text-gray-800">母乳喂养</span>
@@ -89,9 +89,9 @@ const formatType = (type: string) => {
 
       <!-- 配方奶入口 (Mock) -->
       <button
-        class="bg-white p-6 rounded-3xl shadow-sm flex flex-col items-center justify-center gap-4 transition-transform active:scale-95 border border-blue-50"
+        class="flex flex-col gap-4 justify-center items-center p-6 bg-white rounded-3xl border border-blue-50 shadow-sm transition-transform active:scale-95"
       >
-        <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center">
+        <div class="flex justify-center items-center w-16 h-16 bg-blue-50 rounded-full">
           <span class="text-2xl">🍼</span>
         </div>
         <span class="font-medium text-gray-800">配方奶</span>
@@ -99,22 +99,22 @@ const formatType = (type: string) => {
     </div>
 
     <!-- 最近记录 -->
-    <div class="w-full bg-white rounded-3xl p-6 shadow-sm">
-      <h2 class="text-lg font-medium text-gray-900 mb-4">最近记录 (云端同步)</h2>
+    <div class="p-6 w-full bg-white rounded-3xl shadow-sm">
+      <h2 class="mb-4 text-lg font-medium text-gray-900">最近记录 (云端同步)</h2>
 
-      <div v-if="recentRecords.length === 0" class="text-center text-gray-400 py-4">暂无记录，快去添加吧</div>
+      <div v-if="recentRecords.length === 0" class="py-4 text-center text-gray-400">暂无记录，快去添加吧</div>
 
       <div v-else class="flex flex-col gap-3">
         <div
           v-for="record in recentRecords"
           :key="record.id"
-          class="flex justify-between items-center border-b border-gray-50 pb-3 last:border-0 last:pb-0"
+          class="flex justify-between items-center pb-3 border-b border-gray-50 last:border-0 last:pb-0"
         >
           <div class="flex flex-col">
-            <span class="text-gray-800 font-medium">{{ formatType(record.feeding_type) }}</span>
+            <span class="font-medium text-gray-800">{{ formatType(record.feeding_type) }}</span>
             <span class="text-xs text-gray-400">{{ formatTime(record.feeding_time) }}</span>
           </div>
-          <div class="text-pink-500 font-medium">
+          <div class="font-medium text-pink-500">
             {{ record.duration ? `${record.duration} ${record.unit}` : `${record.amount} ${record.unit}` }}
           </div>
         </div>
